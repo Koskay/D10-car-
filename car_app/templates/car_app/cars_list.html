@@ -1,0 +1,27 @@
+{% extends 'car_app/base.html' %}
+{% block content %}
+
+{% for cars in object_list %}
+    <ul>
+        <li>
+            <img height="250" width="250"
+                        src="{{ cars.photo.url }}" alt="" class="fit">
+        </li>
+        <li>
+            <h3>{{ cars.name }}</h3>
+        </li>
+        <li>
+            Модель : {{ cars.model }}
+        </li>
+        <li>
+            Год выпуска : {{ cars.year }}
+        </li>
+        <li>
+            Цвет : {{ cars.color }}
+        </li>
+        <li>
+            Коробка : {{ cars.get_transmission_display }}
+        </li>
+    </ul>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'car_app/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'car_app/style.css' %}" />
+    <title>Автомобили</title>
+</head>
+<body>
+<form action="{% url 'filter' %}" method="get" name="filter">
+    <div class="left-side my-4">
+        <h3 class="sear-head editContent">Марка</h3>
+        <ul class="w3layouts-box-list">
+            {% for cars in view.get_cars %}
+                <li class="editContent">
+                    <input type="checkbox" class="checked" name="name" value="{{ cars.name }}">
+                    <span class="span editContent">{{ cars.name }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="left-side">
+        <h3 class="sear-head editContent">Год выпуска</h3>
+        <ul class="w3layouts-box-list">
+            {% for cars in view.get_cars %}
+                <li class="editContent">
+                    <input type="checkbox" class="checked" name="year" value="{{ cars.year }}">
+                    <span class="span editContent">{{ cars.year }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <button type="submit">Найти</button>
+</form>
+{% block content %}{% endblock content %}
+</body>
+</html>
